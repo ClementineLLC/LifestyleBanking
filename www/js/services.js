@@ -8,22 +8,26 @@ angular.module('starter.services', [])
     id: 0,
     name: 'Trip to Bora Bora',
     lastText: '$1570/$5000',
-    face: 'img/ben.png'
+    face: 'img/ben.png',
+    date: 'Nov 26th'
   }, {
     id: 1,
     name: 'Boyfriend\'s birthday gift',
     lastText: '$10/$150',
-    face: 'img/max.png'
+    face: 'img/max.png',
+    date: 'Oct 4th'
   }, {
     id: 2,
     name: 'Yoga Retreat',
     lastText: '$380/$400',
-    face: 'img/adam.jpg'
+    face: 'img/adam.jpg',
+    date: 'Dec 6th'
   }, {
     id: 3,
     name: 'Grouse Grind Gondola Pass',
     lastText: '$120/$120',
-    face: 'img/perry.png'
+    face: 'img/perry.png',
+    date: 'Dec 9th'
   }];
 
   return {
