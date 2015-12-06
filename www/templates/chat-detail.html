@@ -6,9 +6,20 @@
 -->
 <ion-view view-title="{{chat.name}}">
   <ion-content class="padding">
+
+  <div class="text-center">
+      AVAILABLE TO SPEND: {{spend}}
+    </div>
+    <br>
+    <div class='goal-detail'>
     <img ng-src="{{chat.face}}" style="width: 64px; height: 64px">
     <p>
       {{chat.lastText}}
     </p>
+    <br>
+  </div>
+    <button class="button button-full button-calm" ng-click="showPopup()">
+      Transfer
+    </button>
   </ion-content>
 </ion-view>

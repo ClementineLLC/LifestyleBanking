@@ -12,7 +12,7 @@ angular.module('starter.controllers', [])
   //});
   $scope.spend = "$2,145";
   $scope.chats = Chats.all();
-
+  
     // Chart.js Data
     $scope.data = [
       {
@@ -77,8 +77,72 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('ChatDetailCtrl', function($scope, $stateParams, Chats) {
+.controller('ChatDetailCtrl', function($scope, $stateParams, $ionicPopup, $timeout, Chats) {
   $scope.chat = Chats.get($stateParams.chatId);
+  $scope.spend = "$2,145";
+
+  $scope.showPopup = function() {
+  $scope.data = {}
+
+  // An elaborate, custom popup
+  var myPopup = $ionicPopup.show({
+    template: '<input type="number" min="1" step="any" ng-model="data.amount">',
+    title: 'Please enter transfer amount:',
+    subTitle: 'Please use positive numbers with 2 decimal places',
+    scope: $scope,
+    buttons: [
+      { text: 'Cancel' },
+      {
+        text: '<b>Transfer</b>',
+        type: 'button-calm',
+        onTap: function(e) {
+          if(!$scope.data.amount){
+            $scope.showAlert();
+
+          }
+          else 
+          {
+            $scope.showConfirm();
+            return $scope.data.amount;
+
+          }
+        }
+      }
+    ]
+  });
+  myPopup.then(function(res) {
+    console.log('Tapped!', res);
+  });
+ };
+
+// An alert dialog
+ $scope.showAlert = function() {
+   var alertPopup = $ionicPopup.alert({
+     title: 'Please enter an amount to transfer',
+     okType: 'button-calm'
+     
+   });
+   alertPopup.then(function(res) {
+     console.log('Thank you for not eating my delicious ice cream cone');
+   });
+ };
+
+
+  $scope.showConfirm = function() {
+   var confirmPopup = $ionicPopup.confirm({
+     title: 'Confirm Transfer of $' + $scope.data.amount,
+     template: 'Are you sure you want to complete this transfer?',
+     okType: 'button-calm'
+   });
+  
+   confirmPopup.then(function(res) {
+     if(res) {
+       console.log('You are sure');
+     } else {
+       console.log('You are not sure');
+     }
+   });
+ };
 })
 
 .controller('AccountCtrl', function($scope) {
